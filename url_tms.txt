@@ -1,0 +1,81 @@
+
+Register User:
+
+POST
+http://localhost:1155/auth/registerNewUser
+
+{
+  "username": “joe”,
+  "email": "joe@example.com",
+  "password": "joe123",
+  "role": "ROLE_ADMIN"
+}
+
+{
+  "username": “anu”,
+  "email": “anu@example.com",
+  "password": “anu123",
+  "role": "ROLE_USER”
+}
+
+
+Login:
+
+POST
+http://localhost:1155/auth/login
+
+{
+  "username": “joe”,
+  "password": "joe123"
+}
+
+
+Create Task (Admin only):
+
+POST http://localhost:1155/tasks/addTask
+
+{
+  "title": "Task1”,
+  "description": “testing”,
+  "dueDate": "2025-06-26”,
+  "priority": "HIGH",
+  "status": "PENDING"
+}
+
+
+Get All Tasks (Admin or User):
+
+POST
+http://localhost:1155/tasks/showAll
+
+
+Get Task by ID:
+
+GET
+http://localhost:1155/tasks/getById/1
+
+
+Update Task (Admin only):
+
+PUT
+http://localhost:1155/tasks/updateTask/1
+
+{
+  "title": "Updated Task1”,
+  "description": "Updated testing”,
+  "dueDate": "2025-07-01”,
+  "priority": "MEDIUM",
+  "status": "IN_PROGRESS"
+}
+
+
+Update Task Status (User or Admin):
+
+PATCH
+http://localhost:1155/tasks/updateTask/1/status?status=COMPLETED
+
+
+Delete Task (Admin only):
+
+DELETE
+http://localhost:1155/tasks/deleteTask/1
